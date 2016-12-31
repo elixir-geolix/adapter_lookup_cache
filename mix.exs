@@ -1,7 +1,7 @@
 defmodule Geolix.Adapter.MMDB2Caching.Mixfile do
   use Mix.Project
 
-  @url_github "https://github.com/mneudert/geolix_adapter_mmdb2_caching"
+  @url_github "https://github.com/elixir-geolix/adapter_mmdb2_caching"
 
   def project do
     [ app:     :geolix_adapter_mmdb2_caching,
