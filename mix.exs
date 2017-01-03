@@ -16,8 +16,7 @@ defmodule Geolix.Adapter.MMDB2Caching.Mixfile do
       preferred_cli_env: [
         coveralls:          :test,
         'coveralls.detail': :test,
-        'coveralls.travis': :test,
-        dialyze:            :test
+        'coveralls.travis': :test
       ],
 
       description:   "MMDB2 adapter for Geolix with integrated caching capabilities",
@@ -33,7 +32,6 @@ defmodule Geolix.Adapter.MMDB2Caching.Mixfile do
   defp deps do
     [ { :ex_doc, ">= 0.0.0", only: :dev },
 
-      { :dialyze,     "~> 0.2", only: :test },
       { :excoveralls, "~> 0.5", only: :test } ]
   end
 
