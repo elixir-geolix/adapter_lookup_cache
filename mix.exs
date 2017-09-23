@@ -31,7 +31,7 @@ defmodule Geolix.Adapter.MMDB2Caching.Mixfile do
 
   defp deps do
     [ { :ex_doc,      ">= 0.0.0", only: :dev },
-      { :excoveralls, "~> 0.6",   only: :test } ]
+      { :excoveralls, "~> 0.7",   only: :test } ]
   end
 
   defp docs do
