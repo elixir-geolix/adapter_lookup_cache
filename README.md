@@ -1,8 +1,6 @@
 # Geolix Adapter: MMDB2 (Caching)
 
-MMDB2 adapter for [`Geolix`](https://github.com/elixir-geolix/geolix) with
-integrated caching capabilities.
-
+MMDB2 adapter for [`Geolix`](https://github.com/elixir-geolix/geolix) with integrated caching capabilities.
 
 ## License
 
