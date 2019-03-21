@@ -8,7 +8,7 @@ defmodule Geolix.Adapter.MMDB2Caching.Mixfile do
       app: :geolix_adapter_mmdb2_caching,
       name: "Geolix Adapter: MMDB2 (Caching)",
       version: "0.1.0-dev",
-      elixir: "~> 1.3",
+      elixir: "~> 1.5",
       deps: deps(),
       description: "MMDB2 adapter for Geolix with integrated caching capabilities",
       docs: docs(),
