@@ -1,4 +1,4 @@
-defmodule Geolix.Adapter.LookupCache.Mixfile do
+defmodule Geolix.Adapter.LookupCache.MixProject do
   use Mix.Project
 
   @url_github "https://github.com/elixir-geolix/adapter_lookup_cache"
