@@ -1,16 +1,16 @@
-defmodule Geolix.Adapter.MMDB2Caching.Mixfile do
+defmodule Geolix.Adapter.LookupCache.Mixfile do
   use Mix.Project
 
-  @url_github "https://github.com/elixir-geolix/adapter_mmdb2_caching"
+  @url_github "https://github.com/elixir-geolix/adapter_lookup_cache"
 
   def project do
     [
-      app: :geolix_adapter_mmdb2_caching,
-      name: "Geolix Adapter: MMDB2 (Caching)",
+      app: :geolix_adapter_lookup_cache,
+      name: "Geolix Adapter: Lookup Cache",
       version: "0.1.0-dev",
       elixir: "~> 1.5",
       deps: deps(),
-      description: "MMDB2 adapter for Geolix with integrated caching capabilities",
+      description: "Lookup cache adapter for Geolix",
       docs: docs(),
       package: package(),
       preferred_cli_env: [

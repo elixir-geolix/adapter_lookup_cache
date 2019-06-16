@@ -1,4 +1,4 @@
-defmodule Geolix.Adapter.MMDB2CachingTest do
+defmodule Geolix.Adapter.LookupCacheTest do
   use ExUnit.Case
 
   test "the truth" do
