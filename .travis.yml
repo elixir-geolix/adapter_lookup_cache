@@ -17,3 +17,10 @@ jobs:
       elixir: 1.8.1
       otp_release: 22.0
       after_success: mix coveralls.travis
+
+    - stage: code quality
+      elixir: 1.8.1
+      otp_release: 22.0
+      script:
+        - mix format --check-formatted
+        - mix credo --strict
