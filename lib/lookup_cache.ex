@@ -25,9 +25,7 @@ defmodule Geolix.Adapter.LookupCache do
 
   @impl Geolix.Adapter
   def database_workers(%{id: database_id, lookup: %{adapter: adapter} = database}) do
-    Code.ensure_loaded(adapter)
-
-    if function_exported?(adapter, :database_workers, 1) do
+    if Code.ensure_loaded?(adapter) and function_exported?(adapter, :database_workers, 1) do
       database
       |> Map.put(:id, database_id)
       |> adapter.database_workers()
@@ -38,7 +36,7 @@ defmodule Geolix.Adapter.LookupCache do
 
   @impl Geolix.Adapter
   def load_database(%{id: database_id, lookup: %{adapter: adapter} = database}) do
-    if Code.ensure_loaded(adapter) do
+    if Code.ensure_loaded?(adapter) do
       if function_exported?(adapter, :load_database, 1) do
         database
         |> Map.put(:id, database_id)
