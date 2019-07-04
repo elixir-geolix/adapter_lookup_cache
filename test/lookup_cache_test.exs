@@ -14,4 +14,16 @@ defmodule Geolix.Adapter.LookupCacheTest do
     assert :ok == Geolix.load_database(database)
     assert :lookup_result == Geolix.lookup({1, 1, 1, 1}, where: :lookup_cache)
   end
+
+  test "unknown adapter error" do
+    database = %{
+      id: :error_unknown,
+      adapter: Geolix.Adapter.LookupCache,
+      lookup: %{
+        adapter: UnknownAdapter
+      }
+    }
+
+    assert {:error, {:config, :unknown_adapter}} == Geolix.load_database(database)
+  end
 end
