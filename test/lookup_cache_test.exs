@@ -26,4 +26,20 @@ defmodule Geolix.Adapter.LookupCacheTest do
 
     assert {:error, {:config, :unknown_adapter}} == Geolix.load_database(database)
   end
+
+  test "unloading" do
+    database = %{
+      id: :unloaded_cache,
+      adapter: Geolix.Adapter.LookupCache,
+      lookup: %{
+        adapter: Geolix.Adapter.Fake,
+        data: %{{1, 1, 1, 1} => :lookup_result}
+      }
+    }
+
+    assert :ok == Geolix.load_database(database)
+    refute nil == Geolix.lookup({1, 1, 1, 1}, where: database[:id])
+    assert :ok == Geolix.unload_database(database[:id])
+    assert nil == Geolix.lookup({1, 1, 1, 1}, where: database[:id])
+  end
 end
