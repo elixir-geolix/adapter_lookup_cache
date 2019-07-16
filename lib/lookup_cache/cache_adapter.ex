@@ -4,7 +4,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   """
 
   @optional_callbacks [
-    cache_workers: 1
+    cache_workers: 2
   ]
 
   @doc """
@@ -14,7 +14,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   adapter specific supervisor (e.g. using the application config) this callback
   should be either unimplemented or return an empty list.
   """
-  @callback cache_workers(database :: map) :: list
+  @callback cache_workers(database :: map, cache :: map) :: list
 
   @doc """
   Perform a cache lookup and return the result.
@@ -25,7 +25,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   - `{:ok, map}` - Cached value found, will be returned directly to caller
   - `{:error, term}` - Cache error, lookup will not be saved to cache
   """
-  @callback get(ip :: :inet.ip_address(), opts :: Keyword.t(), database :: map) ::
+  @callback get(ip :: :inet.ip_address(), opts :: Keyword.t(), database :: map, cache :: map) ::
               {:ok, term} | {:error, term}
 
   @doc """
@@ -33,6 +33,12 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
 
   The adapter should (for now) always return `:ok` and handle errors internally.
   """
-  @callback put(ip :: :inet.ip_address(), opts :: Keyword.t(), database :: map, result :: map) ::
+  @callback put(
+              ip :: :inet.ip_address(),
+              opts :: Keyword.t(),
+              database :: map,
+              cache :: map,
+              result :: map
+            ) ::
               :ok
 end
