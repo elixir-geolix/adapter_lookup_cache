@@ -26,7 +26,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   - `{:error, term}` - Cache error, lookup will not be saved to cache
   """
   @callback get(ip :: :inet.ip_address(), opts :: Keyword.t(), database :: map, cache :: map) ::
-              {:ok, term} | {:error, term}
+              {:ok, map | nil} | {:error, term}
 
   @doc """
   Store a lookup result in the cache.
@@ -38,7 +38,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
               opts :: Keyword.t(),
               database :: map,
               cache :: map,
-              result :: map
+              result :: map | nil
             ) ::
               :ok
 end
