@@ -13,7 +13,13 @@ defmodule Geolix.Adapter.LookupCacheTest do
     def get({3, 3, 3, 3}, _, _, _), do: {:error, :test}
 
     @impl Geolix.Adapter.LookupCache.CacheAdapter
+    def load_cache(_, _), do: :ok
+
+    @impl Geolix.Adapter.LookupCache.CacheAdapter
     def put(_, _, _, _, _), do: :ok
+
+    @impl Geolix.Adapter.LookupCache.CacheAdapter
+    def unload_cache(_, _), do: :ok
   end
 
   test "lookup" do

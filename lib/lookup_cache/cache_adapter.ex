@@ -4,7 +4,9 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   """
 
   @optional_callbacks [
-    cache_workers: 2
+    cache_workers: 2,
+    load_cache: 2,
+    unload_cache: 2
   ]
 
   @doc """
@@ -29,6 +31,11 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
               {:ok, map | nil} | {:error, term}
 
   @doc """
+  Performs loading operations when the connected database is loaded.
+  """
+  @callback load_cache(database :: map, cache :: map) :: :ok
+
+  @doc """
   Store a lookup result in the cache.
 
   The adapter should (for now) always return `:ok` and handle errors internally.
@@ -41,4 +48,9 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
               result :: map | nil
             ) ::
               :ok
+
+  @doc """
+  Performs unloading operations when the connected database is unloaded.
+  """
+  @callback unload_cache(database :: map, cache :: map) :: :ok
 end
