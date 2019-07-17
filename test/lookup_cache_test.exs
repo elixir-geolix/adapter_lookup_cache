@@ -25,12 +25,12 @@ defmodule Geolix.Adapter.LookupCacheTest do
       },
       lookup: %{
         adapter: Geolix.Adapter.Fake,
-        data: %{{1, 1, 1, 1} => :lookup_result}
+        data: %{{1, 1, 1, 1} => %{test: :result}}
       }
     }
 
     assert :ok == Geolix.load_database(database)
-    assert :lookup_result == Geolix.lookup({1, 1, 1, 1}, where: database[:id])
+    assert %{test: :result} == Geolix.lookup({1, 1, 1, 1}, where: database[:id])
   end
 
   test "lookup from cache" do
@@ -59,12 +59,12 @@ defmodule Geolix.Adapter.LookupCacheTest do
       },
       lookup: %{
         adapter: Geolix.Adapter.Fake,
-        data: %{{3, 3, 3, 3} => :lookup_error}
+        data: %{{3, 3, 3, 3} => %{test: :error}}
       }
     }
 
     assert :ok == Geolix.load_database(database)
-    assert :lookup_error == Geolix.lookup({3, 3, 3, 3}, where: database[:id])
+    assert %{test: :error} == Geolix.lookup({3, 3, 3, 3}, where: database[:id])
   end
 
   test "unknown adapter error" do
@@ -91,7 +91,7 @@ defmodule Geolix.Adapter.LookupCacheTest do
       },
       lookup: %{
         adapter: Geolix.Adapter.Fake,
-        data: %{{1, 1, 1, 1} => :lookup_result}
+        data: %{{1, 1, 1, 1} => %{test: :result}}
       }
     }
 
