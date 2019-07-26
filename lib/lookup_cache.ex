@@ -7,9 +7,10 @@ defmodule Geolix.Adapter.LookupCache do
       config :geolix,
         databases: [
           %{
-            id: :my_mmdb_database,
+            id: :my_lookup_id,
             adapter: Geolix.Adapter.LookupCache,
             cache: %{
+              id: :my_cache_id
               adapter: MyCustomCacheAdapter
             },
             lookup: %{
