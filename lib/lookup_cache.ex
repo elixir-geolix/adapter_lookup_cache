@@ -23,6 +23,22 @@ defmodule Geolix.Adapter.LookupCache do
             }
           }
         ]
+  ## Lookup Adapter Configuration
+
+  The configuration for your lookup adapter should contain at least the
+  `:adapter` key to select the proper adapter. The `:id` value will
+  automatically be set to the main database id and is not configurable.
+
+  Please consult the used adapter's documentation for additional requirements
+  and options.
+
+  ## Cache Adapter Configuration
+
+  A map with at least an `:id` and an `:adapter` key is required to define
+  the cache to use.
+
+  Please consult the used adapter's documentation for additional requirements
+  and options.
   """
 
   @behaviour Geolix.Adapter

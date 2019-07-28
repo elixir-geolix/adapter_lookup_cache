@@ -1,6 +1,23 @@
 defmodule Geolix.Adapter.LookupCache.CacheAdapter.ConCache do
   @moduledoc """
-  Cache adpater for `:con_cache`
+  Cache adpater for `:con_cache`.
+
+  ## Usage
+
+      %{
+        cache: %{
+          id: :name_of_the_cache
+          adapter: Geolix.Adapter.LookupCache.CacheAdapter.ConCache,
+          options: [
+            # additional options as required
+          ]
+        }
+      }
+
+  The `:name` option of the cache will be set to the `:id` of the cache
+  configuration if you do not define a custom value.
+
+  If you do not define a `:ttl_check_interval` it will be set to `false`.
   """
 
   @behaviour Geolix.Adapter.LookupCache.CacheAdapter

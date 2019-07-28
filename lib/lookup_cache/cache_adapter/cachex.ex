@@ -1,6 +1,21 @@
 defmodule Geolix.Adapter.LookupCache.CacheAdapter.Cachex do
   @moduledoc """
-  Cache adpater for `:cachex`
+  Cache adpater for `:cachex`.
+
+  ## Usage
+
+      %{
+        cache: %{
+          id: :name_of_the_cache
+          adapter: Geolix.Adapter.LookupCache.CacheAdapter.Cachex,
+          options: [
+            # additional options as required
+          ]
+        }
+      }
+
+  The `:id` for `:cachex` will be automatically set to the `:id` of the
+  cache configuration.
   """
 
   @behaviour Geolix.Adapter.LookupCache.CacheAdapter
