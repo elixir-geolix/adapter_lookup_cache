@@ -6,10 +6,16 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.ConCache do
   @behaviour Geolix.Adapter.LookupCache.CacheAdapter
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter
-  def cache_workers(_database, %{id: cache_id}) do
+  def cache_workers(_database, %{id: cache_id} = cache) do
     import Supervisor.Spec
 
-    [supervisor(ConCache, [[name: cache_id, ttl_check_interval: false]])]
+    options =
+      cache
+      |> Map.get(:options, [])
+      |> Keyword.put_new(:name, cache_id)
+      |> Keyword.put_new(:ttl_check_interval, false)
+
+    [supervisor(ConCache, [options])]
   end
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter
