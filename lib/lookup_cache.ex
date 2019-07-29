@@ -124,7 +124,7 @@ defmodule Geolix.Adapter.LookupCache do
         cache: %{adapter: cache_adapter} = cache,
         lookup: %{adapter: database_adapter} = database
       }) do
-    if Code.ensure_loaded?(cache_adapter) and function_exported?(cache_adapter, :unload_cache, 2) do
+    if function_exported?(cache_adapter, :unload_cache, 2) do
       :ok = cache_adapter.unload_cache(database, cache)
     end
 
