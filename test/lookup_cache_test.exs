@@ -73,6 +73,23 @@ defmodule Geolix.Adapter.LookupCacheTest do
     assert %{test: :error} == Geolix.lookup({3, 3, 3, 3}, where: database[:id])
   end
 
+  test "metadata" do
+    database = %{
+      id: :lookup_cache,
+      adapter: Geolix.Adapter.LookupCache,
+      cache: %{
+        adapter: DummyCache
+      },
+      lookup: %{
+        adapter: Geolix.Adapter.Fake,
+        data: %{{1, 1, 1, 1} => %{test: :result}}
+      }
+    }
+
+    assert :ok == Geolix.load_database(database)
+    assert %{load_epoch: _} = Geolix.metadata(where: database[:id])
+  end
+
   test "unknown adapter error" do
     database = %{
       id: :error_unknown,

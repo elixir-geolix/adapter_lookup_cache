@@ -119,6 +119,20 @@ defmodule Geolix.Adapter.LookupCache do
   end
 
   @impl Geolix.Adapter
+  def metadata(%{
+        id: database_id,
+        lookup: %{adapter: database_adapter} = database
+      }) do
+    if function_exported?(database_adapter, :metadata, 1) do
+      database
+      |> Map.put(:id, database_id)
+      |> database_adapter.metadata()
+    else
+      nil
+    end
+  end
+
+  @impl Geolix.Adapter
   def unload_database(%{
         id: database_id,
         cache: %{adapter: cache_adapter} = cache,
