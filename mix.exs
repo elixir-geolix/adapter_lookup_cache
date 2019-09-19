@@ -53,7 +53,6 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
 
   defp docs do
     [
-      extras: ["CHANGELOG.md", "README.md"],
       main: "Geolix.Adapter.LookupCache",
       source_ref: "master",
       source_url: @url_github
