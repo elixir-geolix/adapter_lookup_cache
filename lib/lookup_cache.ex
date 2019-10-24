@@ -43,6 +43,20 @@ defmodule Geolix.Adapter.LookupCache do
 
   Please consult the used adapter's documentation for additional requirements
   and options.
+
+  ### Cache Adapter Implementation
+
+  Adapters for the following cache libraries are pre-packaged:
+
+  - `Geolix.Adapter.LookupCache.CacheAdapter.Cachex`
+  - `Geolix.Adapter.LookupCache.CacheAdapter.ConCache`
+
+  To use any of these you also need to add the library itself as a dependency
+  to your application. The compatible versions used for testing are configured
+  as optional dependencies of `:geolix_adapter_lookup_cache`.
+
+  If you intend to use a custom cache adapter you should adhere to the
+  `Geolix.Adapter.LookupCache.CacheAdapter` behaviour.
   """
 
   @behaviour Geolix.Adapter
