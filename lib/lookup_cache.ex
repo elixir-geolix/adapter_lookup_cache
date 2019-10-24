@@ -50,6 +50,7 @@ defmodule Geolix.Adapter.LookupCache do
 
   - `Geolix.Adapter.LookupCache.CacheAdapter.Cachex`
   - `Geolix.Adapter.LookupCache.CacheAdapter.ConCache`
+  - `Geolix.Adapter.LookupCache.CacheAdapter.Fake`
 
   To use any of these you also need to add the library itself as a dependency
   to your application. The compatible versions used for testing are configured
