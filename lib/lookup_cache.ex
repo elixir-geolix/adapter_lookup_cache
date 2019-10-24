@@ -1,8 +1,11 @@
 defmodule Geolix.Adapter.LookupCache do
   @moduledoc """
-  Lookup cache adapter for Geolix
+  Lookup cache adapter for Geolix.
 
   ## Adapter Configuration
+
+  To start using the adapter in front of a regular adapter you need to modify
+  the database entry of your `:geolix` configuration:
 
       config :geolix,
         databases: [
@@ -23,6 +26,7 @@ defmodule Geolix.Adapter.LookupCache do
             }
           }
         ]
+
   ## Lookup Adapter Configuration
 
   The configuration for your lookup adapter should contain at least the
