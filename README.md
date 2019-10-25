@@ -1,6 +1,6 @@
 # Geolix Adapter: Lookup Cache
 
-MMDB2 adapter for [`Geolix`](https://github.com/elixir-geolix/geolix).
+Lookup cache adapter for [`Geolix`](https://github.com/elixir-geolix/geolix).
 
 ## Package Setup
 
