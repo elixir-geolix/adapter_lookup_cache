@@ -7,7 +7,7 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
     [
       app: :geolix_adapter_lookup_cache,
       name: "Geolix Adapter: Lookup Cache",
-      version: "0.1.0",
+      version: "0.2.0-dev",
       elixir: "~> 1.5",
       deps: deps(),
       description: "Lookup cache adapter for Geolix",
@@ -54,7 +54,7 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
   defp docs do
     [
       main: "Geolix.Adapter.LookupCache",
-      source_ref: "v0.1.0",
+      source_ref: "master",
       source_url: @url_github
     ]
   end
