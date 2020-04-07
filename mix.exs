@@ -32,7 +32,7 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
       {:cachex, "~> 3.0", optional: true},
       {:con_cache, "~> 0.14.0", optional: true},
       {:credo, "~> 1.0", only: :dev, runtime: false},
-      {:dialyxir, "~> 1.0.0-rc", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.0.0", only: :dev, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:excoveralls, "~> 0.12", only: :test, runtime: false},
       {:geolix, "~> 1.0"}
