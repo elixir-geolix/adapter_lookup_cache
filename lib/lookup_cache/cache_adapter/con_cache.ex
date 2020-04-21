@@ -24,15 +24,19 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.ConCache do
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter
   def cache_workers(_database, %{id: cache_id} = cache) do
-    import Supervisor.Spec
-
     options =
       cache
       |> Map.get(:options, [])
       |> Keyword.put_new(:name, cache_id)
       |> Keyword.put_new(:ttl_check_interval, false)
 
-    [supervisor(ConCache, [options])]
+    [
+      %{
+        id: cache_id,
+        start: {ConCache, :start_link, [options]},
+        type: :supervisor
+      }
+    ]
   end
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter

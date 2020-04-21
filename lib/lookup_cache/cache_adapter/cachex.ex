@@ -22,9 +22,12 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Cachex do
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter
   def cache_workers(_database, %{id: cache_id} = cache) do
-    import Supervisor.Spec
-
-    [worker(Cachex, [cache_id, Map.get(cache, :options, [])])]
+    [
+      %{
+        id: cache_id,
+        start: {Cachex, :start_link, [cache_id, Map.get(cache, :options, [])]}
+      }
+    ]
   end
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter
