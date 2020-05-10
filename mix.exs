@@ -35,7 +35,7 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:excoveralls, "~> 0.12.0", only: :test, runtime: false},
-      {:geolix, github: "elixir-geolix/geolix", ref: "05592951c028b458e3801f56a1adb66b8f320ce1"}
+      {:geolix, "~> 1.1"}
     ]
   end
 
