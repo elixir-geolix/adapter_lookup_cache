@@ -13,7 +13,7 @@ defmodule Geolix.Adapter.LookupCache do
             id: :my_lookup_id,
             adapter: Geolix.Adapter.LookupCache,
             cache: %{
-              id: :my_cache_id
+              id: :my_cache_id,
               adapter: MyCustomCacheAdapter
             },
             lookup: %{

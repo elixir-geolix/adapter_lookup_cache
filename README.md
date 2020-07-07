@@ -30,7 +30,7 @@ config :geolix,
       id: :my_lookup_id,
       adapter: Geolix.Adapter.LookupCache,
       cache: %{
-        id: :my_cache_id
+        id: :my_cache_id,
         adapter: MyCacheAdapter
       },
       lookup: %{
