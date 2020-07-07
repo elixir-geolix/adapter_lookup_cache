@@ -40,7 +40,7 @@ config :geolix,
   ]
 ```
 
-The id of the main database configuration will be used for the lookup adapter and automatically passed when required.
+The `:id` of the adapter configuration will be reused for the lookup adapter and automatically passed when required.
 
 ## License
 
