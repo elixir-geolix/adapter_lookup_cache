@@ -18,8 +18,27 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Fake do
   @behaviour Geolix.Adapter.LookupCache.CacheAdapter
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter
-  def get(_, _, _, _), do: {:ok, nil}
+  def get(_, _, database, cache) do
+    :ok = maybe_apply_mfargs(database, cache, :mfargs_get)
+
+    {:ok, nil}
+  end
 
   @impl Geolix.Adapter.LookupCache.CacheAdapter
-  def put(_, _, _, _, _), do: :ok
+  def put(_, _, database, cache, _) do
+    :ok = maybe_apply_mfargs(database, cache, :mfargs_put)
+
+    :ok
+  end
+
+  defp maybe_apply_mfargs(database, cache, key) do
+    _ =
+      case Map.get(cache, key) do
+        {mod, fun, extra_args} -> apply(mod, fun, [database, cache | extra_args])
+        {mod, fun} -> apply(mod, fun, [database, cache])
+        nil -> :ok
+      end
+
+    :ok
+  end
 end
