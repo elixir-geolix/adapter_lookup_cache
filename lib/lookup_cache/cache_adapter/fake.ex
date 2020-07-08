@@ -6,7 +6,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Fake do
 
       %{
         cache: %{
-          id: :name_of_the_cache
+          id: :name_of_the_cache,
           adapter: Geolix.Adapter.LookupCache.CacheAdapter.Fale
         }
       }

@@ -6,7 +6,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.ConCache do
 
       %{
         cache: %{
-          id: :name_of_the_cache
+          id: :name_of_the_cache,
           adapter: Geolix.Adapter.LookupCache.CacheAdapter.ConCache,
           options: [
             # additional options as required
