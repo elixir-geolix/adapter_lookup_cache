@@ -15,16 +15,18 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Fake do
   to be passed to the original lookup adapter.
   """
 
-  @behaviour Geolix.Adapter.LookupCache.CacheAdapter
+  alias Geolix.Adapter.LookupCache.CacheAdapter
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @behaviour CacheAdapter
+
+  @impl CacheAdapter
   def get(_, _, database, cache) do
     :ok = maybe_apply_mfargs(database, cache, :mfargs_get)
 
     {:ok, nil}
   end
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @impl CacheAdapter
   def put(_, _, database, cache, _) do
     :ok = maybe_apply_mfargs(database, cache, :mfargs_put)
 

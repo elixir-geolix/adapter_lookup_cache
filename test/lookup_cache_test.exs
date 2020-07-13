@@ -2,23 +2,25 @@ defmodule Geolix.Adapter.LookupCacheTest do
   use ExUnit.Case
 
   defmodule DummyCache do
-    @behaviour Geolix.Adapter.LookupCache.CacheAdapter
+    alias Geolix.Adapter.LookupCache.CacheAdapter
 
-    @impl Geolix.Adapter.LookupCache.CacheAdapter
+    @behaviour CacheAdapter
+
+    @impl CacheAdapter
     def cache_workers(_, _), do: []
 
-    @impl Geolix.Adapter.LookupCache.CacheAdapter
+    @impl CacheAdapter
     def get({1, 1, 1, 1}, _, _, _), do: {:ok, nil}
     def get({2, 2, 2, 2}, _, _, _), do: {:ok, %{:test => :result}}
     def get({3, 3, 3, 3}, _, _, _), do: {:error, :test}
 
-    @impl Geolix.Adapter.LookupCache.CacheAdapter
+    @impl CacheAdapter
     def load_cache(_, _), do: :ok
 
-    @impl Geolix.Adapter.LookupCache.CacheAdapter
+    @impl CacheAdapter
     def put(_, _, _, _, _), do: :ok
 
-    @impl Geolix.Adapter.LookupCache.CacheAdapter
+    @impl CacheAdapter
     def unload_cache(_, _), do: :ok
   end
 

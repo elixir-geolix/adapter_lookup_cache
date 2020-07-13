@@ -18,9 +18,11 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Cachex do
   cache configuration.
   """
 
-  @behaviour Geolix.Adapter.LookupCache.CacheAdapter
+  alias Geolix.Adapter.LookupCache.CacheAdapter
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @behaviour CacheAdapter
+
+  @impl CacheAdapter
   def cache_workers(_database, %{id: cache_id} = cache) do
     [
       %{
@@ -30,12 +32,12 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Cachex do
     ]
   end
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @impl CacheAdapter
   def get(ip, _, _, %{id: cache_id}) do
     Cachex.get(cache_id, ip)
   end
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @impl CacheAdapter
   def put(ip, _, _, %{id: cache_id}, result) do
     _ = Cachex.put(cache_id, ip, result)
 

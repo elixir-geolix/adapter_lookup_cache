@@ -20,9 +20,11 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.ConCache do
   If you do not define a `:ttl_check_interval` it will be set to `false`.
   """
 
-  @behaviour Geolix.Adapter.LookupCache.CacheAdapter
+  alias Geolix.Adapter.LookupCache.CacheAdapter
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @behaviour CacheAdapter
+
+  @impl CacheAdapter
   def cache_workers(_database, %{id: cache_id} = cache) do
     options =
       cache
@@ -39,14 +41,14 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.ConCache do
     ]
   end
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @impl CacheAdapter
   def get(ip, _, _, %{id: cache_id}) do
     value = ConCache.get(cache_id, ip)
 
     {:ok, value}
   end
 
-  @impl Geolix.Adapter.LookupCache.CacheAdapter
+  @impl CacheAdapter
   def put(ip, _, _, %{id: cache_id}, result) do
     ConCache.put(cache_id, ip, result)
   end
