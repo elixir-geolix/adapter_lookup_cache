@@ -68,12 +68,12 @@ defmodule Geolix.Adapter.LookupCache do
         cache: %{adapter: cache_adapter} = cache,
         lookup: %{adapter: database_adapter} = database
       }) do
+    database = Map.put(database, :id, database_id)
+
     cache_workers =
       if Code.ensure_loaded?(cache_adapter) and
            function_exported?(cache_adapter, :cache_workers, 2) do
-        database
-        |> Map.put(:id, database_id)
-        |> cache_adapter.cache_workers(cache)
+        cache_adapter.cache_workers(database, cache)
       else
         []
       end
@@ -81,9 +81,7 @@ defmodule Geolix.Adapter.LookupCache do
     database_workers =
       if Code.ensure_loaded?(database_adapter) and
            function_exported?(database_adapter, :database_workers, 1) do
-        database
-        |> Map.put(:id, database_id)
-        |> database_adapter.database_workers()
+        database_adapter.database_workers(database)
       else
         []
       end
@@ -97,15 +95,15 @@ defmodule Geolix.Adapter.LookupCache do
         cache: %{adapter: cache_adapter} = cache,
         lookup: %{adapter: database_adapter} = database
       }) do
+    database = Map.put(database, :id, database_id)
+
     if Code.ensure_loaded?(cache_adapter) and function_exported?(cache_adapter, :load_cache, 2) do
       :ok = cache_adapter.load_cache(database, cache)
     end
 
     if Code.ensure_loaded?(database_adapter) do
       if function_exported?(database_adapter, :load_database, 1) do
-        database
-        |> Map.put(:id, database_id)
-        |> database_adapter.load_database()
+        database_adapter.load_database(database)
       else
         :ok
       end
@@ -157,14 +155,14 @@ defmodule Geolix.Adapter.LookupCache do
         cache: %{adapter: cache_adapter} = cache,
         lookup: %{adapter: database_adapter} = database
       }) do
+    database = Map.put(database, :id, database_id)
+
     if function_exported?(cache_adapter, :unload_cache, 2) do
       :ok = cache_adapter.unload_cache(database, cache)
     end
 
     if function_exported?(database_adapter, :unload_database, 1) do
-      database
-      |> Map.put(:id, database_id)
-      |> database_adapter.unload_database()
+      database_adapter.unload_database(database)
     else
       :ok
     end
