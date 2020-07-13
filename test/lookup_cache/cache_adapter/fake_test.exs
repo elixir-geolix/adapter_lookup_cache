@@ -51,7 +51,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
 
     _ = Geolix.load_database(database)
     _ = Geolix.lookup(ip, where: database[:id])
-    _ = Geolix.unload_database(database)
+    _ = Geolix.unload_database(database[:id])
 
     assert_receive %{id: ^test}
     assert_receive %{id: ^test}
@@ -79,7 +79,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
 
     _ = Geolix.load_database(database)
     _ = Geolix.lookup(ip, where: database[:id])
-    _ = Geolix.unload_database(database)
+    _ = Geolix.unload_database(database[:id])
 
     assert_receive :get
     assert_receive :put
