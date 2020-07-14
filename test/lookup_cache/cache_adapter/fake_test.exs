@@ -1,7 +1,7 @@
 defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
   use ExUnit.Case
 
-  alias Geolix.Adapter.LookupCache.CacheAdapter.Fake
+  alias Geolix.Adapter.LookupCache.CacheAdapter.Fake, as: FakeCacheAdapter
 
   defmodule MFArgsSender do
     def notify(database, %{notify: pid}), do: send(pid, database)
@@ -17,7 +17,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
       adapter: Geolix.Adapter.LookupCache,
       cache: %{
         id: :lookup_cache_fake_cache,
-        adapter: Fake
+        adapter: FakeCacheAdapter
       },
       lookup: %{
         adapter: Geolix.Adapter.Fake,
@@ -38,7 +38,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
       adapter: Geolix.Adapter.LookupCache,
       cache: %{
         id: :test_cache,
-        adapter: Fake,
+        adapter: FakeCacheAdapter,
         mfargs_get: {MFArgsSender, :notify},
         mfargs_put: {MFArgsSender, :notify},
         notify: self()
@@ -66,7 +66,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
       adapter: Geolix.Adapter.LookupCache,
       cache: %{
         id: :test_cache,
-        adapter: Fake,
+        adapter: FakeCacheAdapter,
         mfargs_get: {MFArgsSender, :notify, [:get]},
         mfargs_put: {MFArgsSender, :notify, [:put]},
         notify: self()
