@@ -39,8 +39,11 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
       cache: %{
         id: :test_cache,
         adapter: FakeCacheAdapter,
+        mfargs_cache_workers: {MFArgsSender, :notify},
         mfargs_get: {MFArgsSender, :notify},
+        mfargs_load_cache: {MFArgsSender, :notify},
         mfargs_put: {MFArgsSender, :notify},
+        mfargs_unload_cache: {MFArgsSender, :notify},
         notify: self()
       },
       lookup: %{
@@ -53,6 +56,9 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
     _ = Geolix.lookup(ip, where: database[:id])
     _ = Geolix.unload_database(database[:id])
 
+    assert_receive %{id: ^test}
+    assert_receive %{id: ^test}
+    assert_receive %{id: ^test}
     assert_receive %{id: ^test}
     assert_receive %{id: ^test}
   end
@@ -67,8 +73,11 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
       cache: %{
         id: :test_cache,
         adapter: FakeCacheAdapter,
+        mfargs_cache_workers: {MFArgsSender, :notify, [:cache_workers]},
         mfargs_get: {MFArgsSender, :notify, [:get]},
+        mfargs_load_cache: {MFArgsSender, :notify, [:load_cache]},
         mfargs_put: {MFArgsSender, :notify, [:put]},
+        mfargs_unload_cache: {MFArgsSender, :notify, [:unload_cache]},
         notify: self()
       },
       lookup: %{
@@ -81,7 +90,10 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.FakeTest do
     _ = Geolix.lookup(ip, where: database[:id])
     _ = Geolix.unload_database(database[:id])
 
+    assert_receive :cache_workers
+    assert_receive :load_cache
     assert_receive :get
     assert_receive :put
+    assert_receive :unload_cache
   end
 end

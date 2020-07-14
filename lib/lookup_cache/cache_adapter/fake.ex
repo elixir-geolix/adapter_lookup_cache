@@ -20,6 +20,13 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Fake do
   @behaviour CacheAdapter
 
   @impl CacheAdapter
+  def cache_workers(database, cache) do
+    :ok = maybe_apply_mfargs(database, cache, :mfargs_cache_workers)
+
+    []
+  end
+
+  @impl CacheAdapter
   def get(_, _, database, cache) do
     :ok = maybe_apply_mfargs(database, cache, :mfargs_get)
 
@@ -27,9 +34,20 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter.Fake do
   end
 
   @impl CacheAdapter
+  def load_cache(database, cache) do
+    :ok = maybe_apply_mfargs(database, cache, :mfargs_load_cache)
+    :ok
+  end
+
+  @impl CacheAdapter
   def put(_, _, database, cache, _) do
     :ok = maybe_apply_mfargs(database, cache, :mfargs_put)
+    :ok
+  end
 
+  @impl CacheAdapter
+  def unload_cache(database, cache) do
+    :ok = maybe_apply_mfargs(database, cache, :mfargs_unload_cache)
     :ok
   end
 
