@@ -18,10 +18,9 @@ defmodule Geolix.Adapter.LookupCache do
             },
             lookup: %{
               adapter: Geolix.Adapter.Fake,
-              data:
-                %{}
-                |> Map.put({1, 1, 1, 1}, %{country: %{iso_code: "US"}})
-                |> Map.put({2, 2, 2, 2}, %{country: %{iso_code: "GB"}})
+              data: %{
+                {1, 1, 1, 1} => %{country: %{iso_code: "US"}},
+                {2, 2, 2, 2} => %{country: %{iso_code: "GB"}}
               }
             }
           }
