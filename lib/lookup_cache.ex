@@ -59,6 +59,24 @@ defmodule Geolix.Adapter.LookupCache do
   `Geolix.Adapter.LookupCache.CacheAdapter` behaviour.
   """
 
+  @typedoc """
+  Cache base type.
+  """
+  @type cache :: %{
+          required(:id) => atom,
+          required(:adapter) => module
+        }
+
+  @typedoc """
+  Extended base database type.
+  """
+  @type database :: %{
+          required(:id) => atom,
+          required(:adapter) => module,
+          required(:cache) => cache,
+          required(:lookup) => Geolix.database()
+        }
+
   @behaviour Geolix.Adapter
 
   @impl Geolix.Adapter

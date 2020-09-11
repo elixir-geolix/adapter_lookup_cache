@@ -3,6 +3,8 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   Behaviour a cache adapter is expected to follow.
   """
 
+  alias Geolix.Adapter.LookupCache
+
   @optional_callbacks [
     cache_workers: 2,
     load_cache: 2,
@@ -16,7 +18,7 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   adapter specific supervisor (e.g. using the application config) this callback
   should be either unimplemented or return an empty list.
   """
-  @callback cache_workers(database :: map, cache :: map) :: list
+  @callback cache_workers(database :: Geolix.database(), cache :: LookupCache.cache()) :: list
 
   @doc """
   Perform a cache lookup and return the result.
@@ -27,13 +29,18 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   - `{:ok, map}` - Cached value found, will be returned directly to caller
   - `{:error, term}` - Cache error, lookup will not be saved to cache
   """
-  @callback get(ip :: :inet.ip_address(), opts :: Keyword.t(), database :: map, cache :: map) ::
+  @callback get(
+              ip :: :inet.ip_address(),
+              opts :: Keyword.t(),
+              database :: Geolix.database(),
+              cache :: LookupCache.cache()
+            ) ::
               {:ok, map | nil} | {:error, term}
 
   @doc """
   Performs loading operations when the connected database is loaded.
   """
-  @callback load_cache(database :: map, cache :: map) :: :ok
+  @callback load_cache(database :: Geolix.database(), cache :: LookupCache.cache()) :: :ok
 
   @doc """
   Store a lookup result in the cache.
@@ -43,8 +50,8 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   @callback put(
               ip :: :inet.ip_address(),
               opts :: Keyword.t(),
-              database :: map,
-              cache :: map,
+              database :: Geolix.database(),
+              cache :: LookupCache.cache(),
               result :: map | nil
             ) ::
               :ok
@@ -52,5 +59,5 @@ defmodule Geolix.Adapter.LookupCache.CacheAdapter do
   @doc """
   Performs unloading operations when the connected database is unloaded.
   """
-  @callback unload_cache(database :: map, cache :: map) :: :ok
+  @callback unload_cache(database :: Geolix.database(), cache :: LookupCache.cache()) :: :ok
 end
