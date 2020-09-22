@@ -6,6 +6,7 @@
     - Usage of `Supervisor` functions becoming deprecated in Elixir `1.11.0` has been removed
 
 - Backwards incompatible changes
+    - `:geolix` has been updated to `~> 2.0`
     - Minimum required elixir version is now `~> 1.7`
 
 - Bug fixes
