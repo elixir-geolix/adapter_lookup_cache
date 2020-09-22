@@ -10,7 +10,7 @@ To use the Lookup Cache Adapter with your projects, edit your `mix.exs` file and
 defp deps do
   [
     # ...
-    {:geolix_adapter_lookup_cache, "~> 0.1.0"},
+    {:geolix_adapter_lookup_cache, "~> 0.2.0"},
     {:your_geolix_adapter_of_choice, "~> 0.1.0"},
     # ...
   ]
