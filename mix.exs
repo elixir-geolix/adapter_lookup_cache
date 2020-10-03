@@ -53,7 +53,18 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
 
   defp docs do
     [
+      groups_for_modules: [
+        Adapters: [
+          Geolix.Adapter.LookupCache.CacheAdapter.Cachex,
+          Geolix.Adapter.LookupCache.CacheAdapter.ConCache,
+          Geolix.Adapter.LookupCache.CacheAdapter.Fake
+        ]
+      ],
       main: "Geolix.Adapter.LookupCache",
+      nest_modules_by_prefix: [
+        Geolix.Adapter,
+        Geolix.Adapter.LookupCache.CacheAdapter
+      ],
       source_ref: "master",
       source_url: @url_github
     ]
