@@ -1,6 +1,6 @@
 defmodule Geolix.Adapter.LookupCache.CacheAdapter.Cachex do
   @moduledoc """
-  Cache adpater for `:cachex`.
+  Cache adapter for `:cachex`.
 
   ## Usage
 

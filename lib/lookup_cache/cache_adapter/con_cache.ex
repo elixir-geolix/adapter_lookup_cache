@@ -1,6 +1,6 @@
 defmodule Geolix.Adapter.LookupCache.CacheAdapter.ConCache do
   @moduledoc """
-  Cache adpater for `:con_cache`.
+  Cache adapter for `:con_cache`.
 
   ## Usage
 
