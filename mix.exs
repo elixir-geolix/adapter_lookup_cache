@@ -56,6 +56,12 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
 
   defp docs do
     [
+      extras: [
+        "CHANGELOG.md",
+        LICENSE: [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      formatters: ["html"],
       groups_for_modules: [
         Adapters: [
           Geolix.Adapter.LookupCache.CacheAdapter.Cachex,
