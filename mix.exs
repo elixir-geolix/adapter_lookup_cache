@@ -3,12 +3,13 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
 
   @url_changelog "https://hexdocs.pm/geolix_adapter_lookup_cache/changelog.html"
   @url_github "https://github.com/elixir-geolix/adapter_lookup_cache"
+  @version "0.3.0-dev"
 
   def project do
     [
       app: :geolix_adapter_lookup_cache,
       name: "Geolix Adapter: Lookup Cache",
-      version: "0.3.0-dev",
+      version: @version,
       elixir: "~> 1.9",
       deps: deps(),
       description: "Lookup cache adapter for Geolix",
@@ -67,7 +68,7 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
         Geolix.Adapter,
         Geolix.Adapter.LookupCache.CacheAdapter
       ],
-      source_ref: "master",
+      source_ref: "v#{@version}",
       source_url: @url_github
     ]
   end
