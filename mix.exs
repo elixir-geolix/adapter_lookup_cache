@@ -50,7 +50,7 @@ defmodule Geolix.Adapter.LookupCache.MixProject do
       ],
       plt_add_apps: [:cachex, :con_cache],
       plt_core_path: "plts",
-      plt_file: {:no_warn, "plts/dialyzer.plt"}
+      plt_local_path: "plts"
     ]
   end
 
