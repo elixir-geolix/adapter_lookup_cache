@@ -3,7 +3,7 @@
 ## v0.3.0-dev
 
 - Backwards incompatible changes
-    - Minimum required elixir version is now `~> 1.9`
+    - Minimum required Elixir version is now `~> 1.9`
 
 ## v0.2.0 (2020-09-22)
 
@@ -12,7 +12,7 @@
 
 - Backwards incompatible changes
     - `:geolix` has been updated to `~> 2.0`
-    - Minimum required elixir version is now `~> 1.7`
+    - Minimum required Elixir version is now `~> 1.7`
 
 - Bug fixes
     - All cache adapter callbacks now receive the database configuration with the `:id` properly set
