@@ -111,6 +111,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     strategy:
+      fail-fast: false
       matrix:
         include:
           - elixir: '1.11.4'
