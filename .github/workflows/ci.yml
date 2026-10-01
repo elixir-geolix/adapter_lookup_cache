@@ -132,10 +132,6 @@ jobs:
           - elixir: '1.19.5'
             otp: '28.5'
 
-    env:
-      MIX_ENV: test
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
       - uses: actions/checkout@v7
         with:
